@@ -24,6 +24,12 @@ inputs:
   program-name:
     description: ""
     required: false
+  input-file-path:
+    description: ""
+    required: false
+  output-dir-path:
+    description: ""
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"

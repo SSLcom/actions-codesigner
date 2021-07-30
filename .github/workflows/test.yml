@@ -21,7 +21,7 @@ jobs:
       - name: Run Action
         uses: ./
         with:
-          command: get_credential_ids
+          command: sign
           username: ${{secrets.ES_USERNAME}}
           password: ${{secrets.ES_PASSWORD}}
           credential-id: 8b072e22-7685-4771-b5c6-48e46614915f

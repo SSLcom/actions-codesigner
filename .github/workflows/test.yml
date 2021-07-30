@@ -11,8 +11,8 @@ jobs:
       - name: Run Action
         uses: ./
         env:
-          ESIGNER_USERNAME: ${{ secrets.ESIGNER_USERNAME }}
-          ESIGNER_PASSWORD: ${{ secrets.ESIGNER_PASSWORD }}
+          ES_USERNAME: ${{ secrets.ES_USERNAME }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         with:
           command: |
-            get_credential_ids -username ${ESIGNER_USERNAME} -password ${ESIGNER_PASSWORD}
+            get_credential_ids -username '$ESIGNER_USERNAME' -password '$ES_PASSWORD'

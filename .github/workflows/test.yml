@@ -16,7 +16,7 @@ jobs:
       - name: Build Java Jar
         shell: bash
         run: |
-          jar cmf HelloWorld.mf ../build/HelloWorld.jar ../build/HelloWorld.class HelloWorld.java
+          jar cmf src/HelloWorld.mf ../build/HelloWorld.jar ../build/HelloWorld.class src/HelloWorld.java
 
       - name: Run Action
         uses: ./

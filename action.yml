@@ -6,9 +6,24 @@ branding:
 description: ""
 inputs:
   command:
-    description: "command to run"
-    default: "--version"
+    description: ""
     required: true
+    default: "--version"    
+  username:
+    description: ""
+    required: false
+  password:
+    description: ""
+    required: false
+  credential_id:
+    description: ""
+    required: false
+  totp-secret:
+    description: ""
+    required: false
+  program-name:
+    description: ""
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"

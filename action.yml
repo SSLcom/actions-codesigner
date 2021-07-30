@@ -24,10 +24,10 @@ inputs:
   program-name:
     description: ""
     required: false
-  input-file-path:
+  file-path:
     description: ""
     required: false
-  output-dir-path:
+  output-path:
     description: ""
     required: false
 runs:

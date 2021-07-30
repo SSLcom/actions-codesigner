@@ -26,5 +26,5 @@ jobs:
           password: ${{secrets.ES_PASSWORD}}
           credential-id: 8b072e22-7685-4771-b5c6-48e46614915f
           totp-secret: ${{secrets.ES_TOTP_SECRET}}
-          input-file-path: build/HellowWorld.jar
-          output-dir-path: build/
+          file-path: build/HellowWorld.jar
+          output-path: build/

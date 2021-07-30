@@ -8,5 +8,7 @@ RUN java --version
 WORKDIR /codesign
 
 COPY ./codesign-tool/ /codesign
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["java", "-cp", ".:/codesign/jar/*", "com.ssl.code.signing.tool.CodeSignTool"]
+ENTRYPOINT ["/entrypoint.sh"]

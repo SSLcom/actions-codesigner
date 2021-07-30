@@ -5,7 +5,14 @@ branding:
   color: "green"
 description: ""
 inputs:
-outputs: 
+  command:
+    description: "command to run"
+    required: true
+outputs:
+  output-file-path:
+    description: ""
 runs:
   using: "docker"
   image: "Dockerfile"
+  args:
+    - ${{ inputs.command }}

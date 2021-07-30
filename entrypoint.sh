@@ -5,7 +5,7 @@ set -o pipefail
 echo "Running ESigner.com CodeSign Action ====>"
 echo ""
 
-COMMAND="java -cp '.:/codesign/jar/*' com.ssl.code.signing.tool.CodeSignTool"
+COMMAND="cd codesign; java -cp '.:/codesign/jar/*' com.ssl.code.signing.tool.CodeSignTool"
 
 [ ! -z $INPUT_COMMAND ] && COMMAND="$COMMAND $INPUT_COMMAND"
 [ ! -z $INPUT_USERNAME ] && COMMAND="$COMMAND -username $INPUT_USERNAME"

@@ -11,5 +11,4 @@ jobs:
       - name: Run Action
         uses: ./
         with:
-          command: |
-            --version
+          command: "--version"

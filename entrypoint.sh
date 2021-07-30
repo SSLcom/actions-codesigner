@@ -16,6 +16,8 @@ COMMAND="cd /codesign; java -cp '.:/codesign/jar/*' com.ssl.code.signing.tool.Co
 [ ! -z $INPUT_FILE_PATH ] && COMMAND="${COMMAND} -input_file_path ${INPUT_FILE_PATH}"
 [ ! -z $INPUT_OUTPUT_PATH ] && COMMAND="${COMMAND} -output_dir_path ${INPUT_OUTPUT_PATH}"
 
+echo $COMMAND
+
 sh -c "set -e;  set -o pipefail; $COMMAND"
 
 echo ""

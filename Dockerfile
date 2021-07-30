@@ -1,8 +1,6 @@
 # Base Image - ubuntu latest
-FROM ubuntu
+FROM openjdk:17-jdk-alpine3.14
 
-RUN apt-get -y upgrade && apt-get -y update
-RUN apt install -y openjdk-11-jre-headless
 RUN java --version
 
 WORKDIR /codesign

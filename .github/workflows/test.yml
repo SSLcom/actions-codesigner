@@ -10,5 +10,9 @@ jobs:
 
       - name: Run Action
         uses: ./
+        env:
+          ESIGNER_USERNAME: ${{ secrets.ESIGNER_USERNAME }}
+          ESIGNER_PASSWORD: ${{ secrets.ESIGNER_PASSWORD }}
         with:
-          command: "--version"
+          command: |
+            get_credential_ids -username "$ESIGNER_USERNAME" -password "$ESIGNER_PASSWORD"

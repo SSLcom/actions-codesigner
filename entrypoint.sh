@@ -20,4 +20,8 @@ echo $COMMAND
 
 sh -c "set -e;  set -o pipefail; $COMMAND"
 
+status=$?
+
+echo $status
+
 echo ""

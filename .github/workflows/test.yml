@@ -15,4 +15,4 @@ jobs:
           ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
         with:
           command: |
-            get_credential_ids -username '$ESIGNER_USERNAME' -password '$ES_PASSWORD'
+            get_credential_ids -username '${{ secrets.ES_USERNAME }}' -password '${{ secrets.ES_PASSWORD }}'

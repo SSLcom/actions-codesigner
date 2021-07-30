@@ -11,7 +11,7 @@ jobs:
       - name: Compile Java Library
         shell: bash
         run: |
-           javac src/HelloWorld.java -d /codesign/build
+           javac src/HelloWorld.java -d ../build
 
       - name: Build Java Jar
         shell: bash

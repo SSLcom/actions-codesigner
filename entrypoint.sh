@@ -24,6 +24,7 @@ status=$?
 
 echo "EXIT STATUS"
 echo $status
+echo "${PIPESTATUS[@]}"
 echo "EXIT STATUS END"
 
 echo ""

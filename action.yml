@@ -15,19 +15,19 @@ inputs:
   password:
     description: ""
     required: false
-  credential-id:
+  credential_id:
     description: ""
     required: false
-  totp-secret:
+  totp_secret:
     description: ""
     required: false
-  program-name:
+  program_name:
     description: ""
     required: false
-  file-path:
+  file_path:
     description: ""
     required: false
-  output-path:
+  output_path:
     description: ""
     required: false
 runs:

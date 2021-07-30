@@ -11,4 +11,6 @@ jobs:
       - name: Run Action
         uses: ./
         with:
-          command: get_credential_ids -username '${{secrets.ES_USERNAME}}' -password '${{secrets.ES_PASSWORD}}'
+          command: get_credential_ids
+          username: ${{secrets.ES_USERNAME}}
+          password: ${{secrets.ES_PASSWORD}} 

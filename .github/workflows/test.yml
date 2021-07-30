@@ -8,6 +8,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Compile Java Library
+        uses: openjdk:17-jdk-alpine3.14
+        shell: bash
+        run: |
+           javac src/HelloWorld.java --target /codesign/build
+
+      - name: Build Java Jar
+        uses: openjdk:17-jdk-alpine3.14
+        shell: bash
+        run: |
+
+
       - name: Run Action
         uses: ./
         with:

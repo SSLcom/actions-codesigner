@@ -11,6 +11,6 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "ghcr.io/sslcom/actions-codesigner:v1"
+  image: "Dockerfile"
   args:
     - ${{ inputs.command }}

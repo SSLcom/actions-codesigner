@@ -22,6 +22,8 @@ sh -c "set -e;  set -o pipefail; $COMMAND"
 
 status=$?
 
+echo "EXIT STATUS"
 echo $status
+echo "EXIT STATUS END"
 
 echo ""

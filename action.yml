@@ -7,6 +7,7 @@ description: ""
 inputs:
   command:
     description: "command to run"
+    default: "--version"
     required: true
 runs:
   using: "docker"

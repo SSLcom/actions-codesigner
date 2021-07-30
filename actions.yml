@@ -1,0 +1,11 @@
+name: "CodeSigner"
+author: "E-Signer.com"
+branding:
+  icon: "feather"
+  color: "green"
+description: ""
+inputs:
+outputs: 
+runs:
+  using: "docker"
+  image: "Dockerfile"

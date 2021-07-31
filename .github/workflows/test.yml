@@ -18,7 +18,7 @@ jobs:
         run: |
           jar cmf ${GITHUB_WORKSPACE}/src/HelloWorld.mf ${GITHUB_WORKSPACE}/build/HelloWorld.jar ${GITHUB_WORKSPACE}/build/HelloWorld.class ${GITHUB_WORKSPACE}/src/HelloWorld.java
 
-      - name: Run Action
+      - name: Sign Files
         uses: ./
         with:
           command: sign
@@ -29,8 +29,15 @@ jobs:
           file_path: ${GITHUB_WORKSPACE}/build/HelloWorld.jar
           output_path: ${GITHUB_WORKSPACE}/build/signed/
 
+      - name: Build Java Jar
+        shell: bash
+        run: |
+          ls -l $GITHUB_WORKSPACE/build/signed
+          ls -l $GITHUB_WORKSPACE/build
+          ls -l $GITHUB_WORKSPACE
+
       - name: Upload Signed Files
         uses: actions/upload-artifact@v2
         with:
-          name: HelloWorld.jar
-          path: ${GITHUB_WORKSPACE}/build/signed/
+          name: HelloWorld
+          path: $GITHUB_WORKSPACE/build/signed/

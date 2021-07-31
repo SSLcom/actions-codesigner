@@ -11,12 +11,12 @@ jobs:
       - name: Compile Java Library
         shell: bash
         run: |
-           javac src/HelloWorld.java -d ../build
+           javac $GITHUB_WORKSPACE/src/HelloWorld.java -d $GITHUB_WORKSPACE/build
 
       - name: Build Java Jar
         shell: bash
         run: |
-          jar cmf src/HelloWorld.mf ../build/HelloWorld.jar ../build/HelloWorld.class src/HelloWorld.java
+          jar cmf $GITHUB_WORKSPACE/src/HelloWorld.mf $GITHUB_WORKSPACE/build/HelloWorld.jar $GITHUB_WORKSPACE/build/HelloWorld.class $GITHUB_WORKSPACE/src/HelloWorld.java
 
       - name: Run Action
         uses: ./
@@ -27,4 +27,4 @@ jobs:
           credential_id: 8b072e22-7685-4771-b5c6-48e46614915f
           totp_secret: ${{secrets.ES_TOTP_SECRET}}
           file_path: $GITHUB_WORKSPACE/build/HellowWorld.jar
-          output_path: $GITHUB_WORKSPACE/build/output/
+          output_path: $GITHUB_WORKSPACE/build/

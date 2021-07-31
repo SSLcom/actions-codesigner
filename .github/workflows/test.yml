@@ -32,10 +32,10 @@ jobs:
           credential_id: 8b072e22-7685-4771-b5c6-48e46614915f
           totp_secret: ${{secrets.ES_TOTP_SECRET}}
           file_path: ${GITHUB_WORKSPACE}/build/HelloWorld.jar
-          output_path: ${GITHUB_WORKSPACE}/build/signed/
+          output_path: ./artifacts
 
       - name: Upload Signed Files
         uses: actions/upload-artifact@v2
         with:
-          name: HelloWorld
-          path: ${GITHUB_WORKSPACE}/build/signed/HelloWorld.jar
+          name: SignedFiles
+          path: ./artifacts

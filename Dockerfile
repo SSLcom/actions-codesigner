@@ -1,9 +1,9 @@
 # Base Image - ubuntu latest
-FROM ubuntu
+FROM openjdk:11.0.12-jdk-slim
 
-RUN apt-get -y upgrade && apt-get -y update
-RUN apt install -y openjdk-11-jre-headless
-RUN java --version
+# RUN apt-get -y upgrade && apt-get -y update
+# RUN apt install -y openjdk-11-jre-headless
+# RUN java --version
 
 WORKDIR /codesign
 

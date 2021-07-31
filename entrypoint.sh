@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e
 
 echo "::group::Run CodeSigner"
@@ -19,7 +19,7 @@ COMMAND="cd /codesign; java -cp '.:/codesign/jar/*' com.ssl.code.signing.tool.Co
 
 RESULT=$(sh -c "set -e; $COMMAND")
 
-if [ "$RESULT" =~ .*"Error".* ]; then
+if [[ "$RESULT" =~ .*"Error".* ]]; then
   echo "::error::Something Went Wrong. Please try again."
   echo "::error::$RESULT"
   exit 1

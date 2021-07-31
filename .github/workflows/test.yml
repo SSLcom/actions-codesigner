@@ -37,5 +37,5 @@ jobs:
       - name: Upload Signed Files
         uses: actions/upload-artifact@v2
         with:
-          name: SignedFiles
-          path: ./artifacts
+          name: HelloWorld.jar
+          path: ./artifacts/HelloWorld.jar

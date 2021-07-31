@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-echo "::group::{title}"
+echo "::group::Run CodeSigner"
 
 echo "Running ESigner.com CodeSign Action ====>"
 echo ""

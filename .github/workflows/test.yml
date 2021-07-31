@@ -21,7 +21,7 @@ jobs:
       - name: Build Artifacts Directory
         shell: bash
         run: |
-          mkdir ./artifacts
+          mkdir ${GITHUB_WORKSPACE}/artifacts
 
       - name: Sign Files
         uses: ./
@@ -32,7 +32,7 @@ jobs:
           credential_id: 8b072e22-7685-4771-b5c6-48e46614915f
           totp_secret: ${{secrets.ES_TOTP_SECRET}}
           file_path: ${GITHUB_WORKSPACE}/build/HelloWorld.jar
-          output_path: ./artifacts
+          output_path: ${GITHUB_WORKSPACE}/artifacts
 
       - name: Upload Signed Files
         uses: actions/upload-artifact@v2

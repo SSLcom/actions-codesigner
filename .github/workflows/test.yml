@@ -14,6 +14,7 @@ jobs:
            COMMAND="javac ${GITHUB_WORKSPACE}/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build"
            echo $COMMAND
            sh -c  "$COMMAND"
+           ls -l  ${GITHUB_WORKSPACE}/build
 
       - name: Build Java Jar
         shell: bash
@@ -28,5 +29,5 @@ jobs:
           password: ${{secrets.ES_PASSWORD}}
           credential_id: 8b072e22-7685-4771-b5c6-48e46614915f
           totp_secret: ${{secrets.ES_TOTP_SECRET}}
-          file_path: $GITHUB_WORKSPACE/build/HellowWorld.jar
-          output_path: $GITHUB_WORKSPACE/build/
+          file_path: ${GITHUB_WORKSPACE}/build/HelloWorld.jar
+          output_path: ${GITHUB_WORKSPACE}/build/

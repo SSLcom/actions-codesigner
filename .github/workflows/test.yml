@@ -32,5 +32,5 @@ jobs:
       - name: Upload Signed Files
         uses: actions/upload-artifact@v2
         with:
-          name: HelloWorldSigned.jar
-          path: ${GITHUB_WORKSPACE}/build/signed/HelloWorld.jar
+          name: HelloWorld.jar
+          path: ${GITHUB_WORKSPACE}/build/signed/

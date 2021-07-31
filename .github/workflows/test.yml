@@ -11,7 +11,9 @@ jobs:
       - name: Compile Java Library
         shell: bash
         run: |
-           javac ${GITHUB_WORKSPACE}/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build
+           COMMAND="javac ${GITHUB_WORKSPACE}/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build"
+           echo $COMMAND
+           sh -c  "$COMMAND"
 
       - name: Build Java Jar
         shell: bash

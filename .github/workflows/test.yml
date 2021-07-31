@@ -11,12 +11,12 @@ jobs:
       - name: Compile Java Library
         shell: bash
         run: |
-           javac $GITHUB_WORKSPACE/src/HelloWorld.java -d $GITHUB_WORKSPACE/build
+           javac ${GITHUB_WORKSPACE}/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build
 
       - name: Build Java Jar
         shell: bash
         run: |
-          jar cmf $GITHUB_WORKSPACE/src/HelloWorld.mf $GITHUB_WORKSPACE/build/HelloWorld.jar $GITHUB_WORKSPACE/build/HelloWorld.class $GITHUB_WORKSPACE/src/HelloWorld.java
+          jar cmf ${GITHUB_WORKSPACE}/src/HelloWorld.mf ${GITHUB_WORKSPACE}/build/HelloWorld.jar ${GITHUB_WORKSPACE}/build/HelloWorld.class ${GITHUB_WORKSPACE}/src/HelloWorld.java
 
       - name: Run Action
         uses: ./

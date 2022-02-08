@@ -24,7 +24,7 @@ jobs:
           mkdir ${GITHUB_WORKSPACE}/artifacts
 
       - name: Sign Files
-        uses: ./
+        uses: sslcom/actions-codesigner@master
         with:
           command: sign
           username: ${{secrets.ES_USERNAME}}

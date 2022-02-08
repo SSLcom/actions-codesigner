@@ -11,12 +11,12 @@ jobs:
       - name: Compile Java Library
         shell: bash
         run: |
-          javac ${GITHUB_WORKSPACE}/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build
+          javac ${GITHUB_WORKSPACE}/test/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build
 
       - name: Build Java Jar
         shell: bash
         run: |
-          jar cmf ${GITHUB_WORKSPACE}/src/HelloWorld.mf ${GITHUB_WORKSPACE}/build/HelloWorld.jar ${GITHUB_WORKSPACE}/build/HelloWorld.class ${GITHUB_WORKSPACE}/src/HelloWorld.java
+          jar cmf ${GITHUB_WORKSPACE}/test/src/HelloWorld.mf ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.jar ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.class ${GITHUB_WORKSPACE}/test/src/HelloWorld.java
 
       - name: Build Artifacts Directory
         shell: bash
@@ -31,7 +31,7 @@ jobs:
           password: ${{secrets.ES_PASSWORD}}
           credential_id: ${{secrets.CREDENTIAL_ID}}
           totp_secret: ${{secrets.ES_TOTP_SECRET}}
-          file_path: ${GITHUB_WORKSPACE}/build/HelloWorld.jar
+          file_path: ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.jar
           output_path: ${GITHUB_WORKSPACE}/artifacts
 
       - name: Upload Signed Files

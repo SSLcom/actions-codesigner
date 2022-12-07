@@ -1,5 +1,5 @@
 # Base Image - ubuntu latest
-FROM openjdk:11.0.12-jdk-slim
+FROM openjdk:18.0.2.1-slim
 
 # RUN apt-get -y upgrade && apt-get -y update
 # RUN apt install -y openjdk-11-jre-headless

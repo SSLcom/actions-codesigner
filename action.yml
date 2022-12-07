@@ -6,25 +6,28 @@ branding:
 description: ""
 inputs:
   command:
-    description: ""
+    description: "Command for CodeSignTool"
     required: true
     default: "--version"    
   username:
-    description: ""
+    description: "ssl.com's username"
     required: false
   password:
-    description: ""
+    description: "ssl.com's password"
     required: false
   credential_id:
-    description: ""
+    description: "eSigner credential id"
     required: false
   totp_secret:
-    description: ""
+    description: "Code Signing totp secret code"
     required: false
   program_name:
     description: ""
     required: false
   file_path:
+    description: ""
+    required: false
+  input_dir_path:
     description: ""
     required: false
   output_path:

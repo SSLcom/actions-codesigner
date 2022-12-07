@@ -15,6 +15,7 @@ COMMAND="cd /codesign; java -cp '.:/codesign/jar/*' com.ssl.code.signing.tool.Co
 [ ! -z $INPUT_TOTP_SECRET ] && COMMAND="${COMMAND} -totp_secret ${INPUT_TOTP_SECRET}"
 [ ! -z $INPUT_PROGRAM_NAME ] && COMMAND="${COMMAND} -program_name ${INPUT_PROGRAM_NAME}"
 [ ! -z $INPUT_FILE_PATH ] && COMMAND="${COMMAND} -input_file_path ${INPUT_FILE_PATH}"
+[ ! -z $INPUT_DIR_PATH ] && COMMAND="${COMMAND} -input_dir_path ${INPUT_DIR_PATH}"
 [ ! -z $INPUT_OUTPUT_PATH ] && COMMAND="${COMMAND} -output_dir_path ${INPUT_OUTPUT_PATH}"
 
 RESULT=$(sh -c "set -e; $COMMAND")

@@ -6,7 +6,7 @@ jobs:
     name: Run CodeSigner Action
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Compile Java Library
         shell: bash
@@ -33,9 +33,11 @@ jobs:
           totp_secret: ${{secrets.ES_TOTP_SECRET}}
           file_path: ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.jar
           output_path: ${GITHUB_WORKSPACE}/artifacts
+          malware_block: false
+          environment_name: PROD
 
       - name: Upload Signed Files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: HelloWorld.jar
           path: ./artifacts/HelloWorld.jar

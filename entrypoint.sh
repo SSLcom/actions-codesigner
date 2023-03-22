@@ -22,6 +22,7 @@ COMMAND="/usr/bin/codesign"
 [ ! -z $INPUT_FILE_PATH ] && COMMAND="${COMMAND} -input_file_path ${INPUT_FILE_PATH}"
 [ ! -z $INPUT_OUTPUT_PATH ] && COMMAND="${COMMAND} -output_dir_path ${INPUT_OUTPUT_PATH}"
 [ ! -z $INPUT_MALWARE_BLOCK ] && COMMAND="${COMMAND} -malware_block=${INPUT_MALWARE_BLOCK}"
+[ ! -z $INPUT_OVERRIDE ] && COMMAND="${COMMAND} -override=${INPUT_OVERRIDE}"
 
 RESULT=$(bash -c "set -e; $COMMAND 2>&1")
 
@@ -32,6 +33,11 @@ if [[ "$RESULT" =~ .*"Error".* || "$RESULT" =~ .*"Exception".* || "$RESULT" =~ .
 else
   echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
   echo "$RESULT"
+fi
+
+if [[ "$INPUT_CLEAN_LOGS" == "true" || "$INPUT_CLEAN_LOGS" == true ]]; then
+    rm -rf /codesign/logs/*.log
+    echo "CodeSigner logs folder is deleted: /codesign/logs"
 fi
 
 echo "::endgroup::"

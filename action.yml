@@ -34,6 +34,14 @@ inputs:
     description: ""
     required: false
     default: "false"
+  override:
+    description: ""
+    required: false
+    default: "false"
+  clean_logs:
+    description: ""
+    required: false
+    default: "false"
   environment_name:
     description: ""
     required: false

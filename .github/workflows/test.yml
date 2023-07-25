@@ -24,7 +24,7 @@ jobs:
           mkdir ${GITHUB_WORKSPACE}/artifacts
 
       - name: Sign Files
-        uses: sslcom/actions-codesigner@develop
+        uses: ./
         with:
           command: sign
           username: ${{secrets.ES_USERNAME}}
@@ -35,9 +35,99 @@ jobs:
           output_path: ${GITHUB_WORKSPACE}/artifacts
           malware_block: false
           environment_name: PROD
+          override: false
+          clean_logs: false
 
       - name: Upload Signed Files
         uses: actions/upload-artifact@v3
         with:
           name: HelloWorld.jar
           path: ./artifacts/HelloWorld.jar
+
+  sign-override:
+    runs-on: ubuntu-latest
+    name: Sign with override options
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Compile Java Library
+        shell: bash
+        run: |
+          javac ${GITHUB_WORKSPACE}/test/src/HelloWorld.java -d ${GITHUB_WORKSPACE}/build
+
+      - name: Build Java Jar
+        shell: bash
+        run: |
+          jar cmf ${GITHUB_WORKSPACE}/test/src/HelloWorld.mf ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.jar ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.class ${GITHUB_WORKSPACE}/test/src/HelloWorld.java
+
+      - name: Build Artifacts Directory
+        shell: bash
+        run: |
+          mkdir ${GITHUB_WORKSPACE}/artifacts
+
+      - name: Sign Files
+        uses: ./
+        with:
+          command: sign
+          username: ${{secrets.ES_USERNAME}}
+          password: ${{secrets.ES_PASSWORD}}
+          credential_id: ${{secrets.CREDENTIAL_ID}}
+          totp_secret: ${{secrets.ES_TOTP_SECRET}}
+          file_path: ${GITHUB_WORKSPACE}/test/src/build/HelloWorld.jar
+          malware_block: false
+          environment_name: PROD
+          override: true
+          clean_logs: true
+
+  sign-external:
+    runs-on: ubuntu-latest
+    name: Sign with External Repo
+    steps:
+      - name: Create Input file for test signing
+        shell: bash
+        run: |
+          mkdir -p ${GITHUB_WORKSPACE}/example
+          echo 'Write-Output -InputObject "Happy Signing From ESigner.com!"' > ${GITHUB_WORKSPACE}/example/codesign.ps1
+
+      - name: Build Artifacts Directory
+        shell: bash
+        run: |
+          mkdir ${GITHUB_WORKSPACE}/artifacts
+
+      - uses: sslcom/actions-codesigner@develop
+        with:
+          command: sign
+          username: ${{ secrets.ES_USERNAME }}
+          password: ${{ secrets.ES_PASSWORD }}
+          credential_id: ${{ secrets.CREDENTIAL_ID }}
+          totp_secret: ${{ secrets.ES_TOTP_SECRET }}
+          file_path: ${GITHUB_WORKSPACE}/example/codesign.ps1
+          output_path: ${GITHUB_WORKSPACE}/artifacts
+          malware_block: false
+          environment_name: PROD
+
+  batch-sign:
+    runs-on: ubuntu-latest
+    name: Run Batch Signing
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create multiple Input file for test signing
+        shell: bash
+        run: |
+          mkdir -p ${GITHUB_WORKSPACE}/example
+          echo 'Write-Output -InputObject "Happy Signing From ESigner.com for Batch Sign 1!"' > ${GITHUB_WORKSPACE}/example/batch1.ps1
+          echo 'Write-Output -InputObject "Happy Signing From ESigner.com for Batch Sign 2!"' > ${GITHUB_WORKSPACE}/example/batch2.ps1
+          echo 'Write-Output -InputObject "Happy Signing From ESigner.com for Batch Sign 3!"' > ${GITHUB_WORKSPACE}/example/batch3.ps1
+
+      - uses: ./
+        with:
+          command: batch_sign
+          username: ${{ secrets.ES_USERNAME }}
+          password: ${{ secrets.ES_PASSWORD }}
+          credential_id: ${{ secrets.CREDENTIAL_ID }}
+          totp_secret: ${{ secrets.ES_TOTP_SECRET }}
+          dir_path: ${GITHUB_WORKSPACE}/example
+          output_path: ${GITHUB_WORKSPACE}/artifacts
+          environment_name: PROD
